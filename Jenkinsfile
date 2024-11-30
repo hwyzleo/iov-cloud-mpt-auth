@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         PROJECT_NAME = "${env.JOB_NAME}"
+        DIR_API = "${env.DIR_KEY}-api"
+        DIR_SERVICE = "${env.DIR_KEY}-service"
         IMAGE_NAME = "${env.REGISTRY_URL}/${PROJECT_NAME}:${env.BUILD_NUMBER}"
     }
 
@@ -12,7 +14,7 @@ pipeline {
                 script {
                     sh '''
                         echo '============================== 构建镜像 =============================='
-                        docker build -t ${IMAGE_NAME} -f ../Dockerfile .
+                        docker build -t ${IMAGE_NAME} -f ../Dockerfile ./${DIR_SERVICE}/
                     '''
                 }
             }
