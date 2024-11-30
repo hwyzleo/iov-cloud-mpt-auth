@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mpt-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_URL}
+        namespace: 32c13f29-1aa6-468a-bacb-81be7f437dc9
+      config:
+        server-addr: ${NACOS_URL}
+        namespace: 32c13f29-1aa6-468a-bacb-81be7f437dc9
+        name: mpt-auth
+        file-extension: yaml
+        shared-configs:
+          - application.yaml
+          - redis.yaml
